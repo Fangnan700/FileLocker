@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <script src="js/jquery-3.6.3.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="icon" sizes="16x16" href="img/upload.png">
+    <title>文件快递柜</title>
+</head>
+<body>
+
+
+<div class="container">
+    <div id="title">
+        文件快递柜
+    </div>
+    <div id="main_frame">
+        <div id="drag_area_frame">
+
+        </div>
+
+        <div id="file_info_frame">
+
+        </div>
+
+        <div id="process_frame">
+
+        </div>
+
+        <div class="row">
+            <select class="form-select" id="save_time_input">
+                <option selected value="1">请选择保存时间，默认为1天</option>
+                <option value="3">3天</option>
+                <option value="7">7天</option>
+                <option value="14">14天</option>
+            </select>
+        </div>
+
+        <div class="row" id="btn_group">
+            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#pickup_file">取 件</button>
+            <button type="button" class="btn btn-primary" onclick="upload()">上 传</button>
+        </div>
+    </div>
+    <input id="file_chooser" type="file" style="visibility: hidden">
+</div>
+
+
+<!--模态弹窗-->
+<div class="modal fade" id="pickup_file" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">取 件</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="pickup_code_input" placeholder="请输入取件码">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关 闭</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="pickup_file()">确 定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="upload_result" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">上传成功！</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="upload_result_content">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">确 定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="download_info" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">下载信息</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="download_info_contents">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取 消</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="download()">下 载</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script src="js/index.js"></script>
+</html>
